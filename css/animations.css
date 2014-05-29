@@ -1,0 +1,34 @@
+/*
+ * animations.css
+ * Stylesheet for animations in InstaViewer
+ * Sandra Liljeqvist, May 2014
+ */
+
+.img-list.ng-enter,
+.img-list.ng-leave {
+    -webkit-transition: 0.75s;
+    -moz-transition: 0.75s;
+    -o-transition: 0.75s;
+    transition: 0.75s;
+}
+ 
+.img-list.ng-enter {
+  opacity: 0;
+}
+
+.img-list.ng-enter-active {
+  opacity: 1;
+}
+
+.img-list.ng-enter-stagger {
+  transition-delay: 0.1s;
+}
+ 
+.img-list.ng-leave {
+  opacity: 1;
+}
+ 
+.img-list.ng-leave-active {
+  opacity: 0;
+}
+

@@ -1,0 +1,89 @@
+<div class="container" on-scroll nextid="{{next}}">
+
+    <div class="button-panel">
+        <div class="col-md-8">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="setLayout('grid')" ng-class="{active: isLayout('grid')}"><span class="glyphicon glyphicon-th"></span></button>
+                <button type="button" class="btn btn-default" ng-click="setLayout('list')" ng-class="{active: isLayout('list')}"><span class="glyphicon glyphicon-align-justify"></span></button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default" ng-click="reload()">
+                <span class="glyphicon glyphicon-refresh"></span>
+            </button>
+        </div>
+    </div> <!--.button-panel-->
+
+    <div class="jumbotron col-md-offset-2 col-md-8">
+        <div class="col-lg-5 col-md-offset-1">
+        <form ng-submit="search()" class="form-inline">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button id="dropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name={{searchType}}>{{searchType}} 
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="" ng-click="setSearchType('Tag')">Tag</a></li>
+                    <li><a href="" ng-click="setSearchType('User')">User</a></li>
+                </ul>
+            </div><!-- /btn-group -->
+            <input type="text" id="search" ng-model="searchValue" ng-focus="clear('search')" class="form-control" placeholder="Search for..">
+            <span class="input-group-btn">
+                <button type="submit" id="searchButton" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+
+        </div> <!--.input-group-->
+        </form>
+    </div>
+    <div class="col-lg-5">
+        <div class="input-group">
+            <span class="input-group-addon">Filter by</span>
+            <input type="text" ng-model="query" ng-focus="clear('filter')" class="form-control" placeholder="add filter">
+        </div>
+    </div>
+    
+    </div> <!-- .jumbotron -->
+</div> <!-- .container -->
+
+<div class="container">
+    <div class="row">
+        <ul id="gallery"> 
+            <li ng-repeat="p in pics | filter:query" class="{{layout}} img-list">
+                <!-- href="{{p.link}}" target="_blank" -->
+                <div class="gridDiv" ng-show="isLayout('grid')">
+                    <a class="gridImg" ng-click="setLightbox(p)"><img ng-src="{{p.images.thumbnail.url}}" src2="{{p.images.standard_resolution.url}}"/></a>
+                </div>
+                <div class="listDiv" ng-show="isLayout('list')">
+                    <div class="userinfo">
+                        <img src="{{p.user.profile_picture}}">
+                        <span>{{p.user.full_name}}</span>
+                        <div class="pull-right">{{p.likes.count}} <span class="glyphicon glyphicon-heart"></span></div>
+                    </div>
+                    <a class="listImg"><img ng-src="{{p.images.standard_resolution.url}}" /></a>
+                    <p class="caption">{{p.caption.text}}</p>
+                </div>
+            </li>
+        </ul>
+    </div> <!-- .row -->
+</div> <!-- .container -->
+
+ <div ng-show="isLightboxOpen()" ng-click="closeLightbox()" class="overlay">
+    <div class="center">
+        <div class="lightbox">
+             <div class="userinfo">
+                <img src="{{lightboxUserImg}}">
+                <span>{{lightboxName}}</span>
+                <div class="pull-right">{{lightboxCount}} <span class="glyphicon glyphicon-heart"></span></div>
+            </div>
+            <a class="listImg"><img ng-src="{{lightboxSrc}}" /></a>
+            <p class="caption">{{lightboxCaption}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="row load">
+    <img id="loadImg" src="load.gif"/>
+</div>
+

@@ -1,5 +1,5 @@
 # InstaViewer
-***An AngularJS application for displaying Instagram photos***
+**An AngularJS application for displaying Instagram photos**  
 Check out the applicaton at: [sanlil.github.io/InstaViewer](http://sanlil.github.io/InstaViewer)
 
 Usage

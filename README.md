@@ -13,5 +13,4 @@ InstaViewer is a single page app based on the Instagram API and was done as an i
 Author
 ------
 Sandra Liljeqvist  
-[sandra.liljeqvist.nu](http://sandra.liljeqvist.nu)  
 **Date:** 2014-05-29  
